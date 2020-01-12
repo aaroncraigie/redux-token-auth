@@ -39,7 +39,7 @@ import {
   SignOutRequestFailedAction,
   SetHasVerificationBeenAttemptedAction,
 } from './types'
-import AsyncLocalStorage from './AsyncLocalStorage'
+import AsyncStorage from '@react-native-community/async-storage'
 import {
   deleteAuthHeaders,
   deleteAuthHeadersFromDeviceStorage,
@@ -130,7 +130,7 @@ const generateAuthActions = (config: { [key: string]: any }): ActionsExport => {
     userRegistrationAttributes,
   } = config
 
-  const Storage: DeviceStorage = Boolean(storage.flushGetRequests) ? storage : AsyncLocalStorage
+  const Storage: DeviceStorage = Boolean(storage.flushGetRequests) ? storage : AsyncStorage
 
   const registerUser = (
     userRegistrationDetails: UserRegistrationDetails,
